@@ -8,7 +8,7 @@ export type PetDocument = HydratedDocument<Pet>;
 })
 
 export class Pet{
-    @Prop({ required: true, auto:true, type: mongoose.Schema.Types.ObjectId})
+    @Prop({ required: true, auto: true, type: mongoose.Schema.Types.ObjectId})
     _id: string;
 
     @Prop({ required: true })

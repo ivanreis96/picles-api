@@ -3,7 +3,7 @@ import UpdateShelterDetailsUseCaseInput from "../dtos/update.shelter.usecase.inp
 import UpdateShelterDetailsUseCaseOutput from "../dtos/update.shelter.usecase.output";
 import { IUseCase } from "src/domain/iusecase.interface";
 import ShelterTokens from "../shelter.tokens";
-import { ShelterRepository } from "../shelter.repository";
+import  ShelterRepository from "../shelter.repository";
 import { Shelter } from "../schemas/shelter.schema";
 import IShelterRepository from "../interfaces/shelter.repository.interface";
 

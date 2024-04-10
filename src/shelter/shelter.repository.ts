@@ -3,7 +3,7 @@ import { Shelter } from "./schemas/shelter.schema";
 import { Model } from "mongoose";
 import IShelterRepository from "./interfaces/shelter.repository.interface";
 
-export class ShelterRepository implements IShelterRepository{
+export default class ShelterRepository implements IShelterRepository{
     constructor(
         @InjectModel(Shelter.name)
         private shelterModel: Model<Shelter>
