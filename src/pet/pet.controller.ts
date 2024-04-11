@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, Inject, Param, Patch, Post, Put } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, Inject, Param, Patch, Post, Put } from '@nestjs/common';
 import CreatePetControllerInput from './dtos/create.pet.controller.input';
 import CreatePetUseCaseOutput from './usecases/dtos/create.pet.usecase.output';
 import CreatePetUseCaseInput from './usecases/dtos/create.pet.usecase.input';
@@ -9,6 +9,8 @@ import GetPetByIdUseCaseOutput from './usecases/dtos/get.pet.by.id.usecase.outpu
 import UpdatePetControllerInput from './dtos/update.pet.controller.input';
 import UpdatePetByIdUseCaseInput from './usecases/dtos/update.pet.by.id.usecase.input';
 import UpdatePetByIdUseCaseOutput from './usecases/dtos/update.pet.by.id.usecase.output';
+import DeletePetByIdUseCaseInput from './usecases/dtos/delete.pet.by.id.usecase.input';
+import DeletePetByIdUseCaseOutput from './usecases/dtos/delete.pet.by.id.usecase.output';
 
 
 @Controller('pet')
@@ -22,6 +24,9 @@ export class PetController {
    
     @Inject(PetTokens.updatePetByIdUseCase)
     private readonly updatePetByIdUseCase: IUseCase<UpdatePetByIdUseCaseInput, UpdatePetByIdUseCaseOutput>
+
+    @Inject(PetTokens.deletePetByIdUseCase)
+    private readonly deletePetByIdUseCase: IUseCase<DeletePetByIdUseCaseInput, DeletePetByIdUseCaseOutput>
 
     @Post()
     async createPet(@Body() input: CreatePetControllerInput): Promise<CreatePetUseCaseOutput>{
@@ -49,9 +54,17 @@ export class PetController {
 
             return await this.updatePetByIdUseCase.run(useCaseInput)
         } catch (error) {
-            throw new Error;
+            throw new BadRequestException(JSON.parse(error.message))
+        }           
+    }
+
+    @Delete(':id')
+    async deletePet(@Param('id') id: string) :Promise<DeletePetByIdUseCaseOutput>{
+        try {
+            return await this.deletePetByIdUseCase.run({ id })
+        } catch (error) {
+            throw new BadRequestException(JSON.parse(error.message))
         }
-           
     }
 }
 

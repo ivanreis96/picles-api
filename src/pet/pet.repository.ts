@@ -3,7 +3,6 @@ import IPetRepository from "./interfaces/pet.repository.interface";
 import { Pet } from "./schemas/pet.schema";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { waitForDebugger } from "inspector";
 
 @Injectable()
 export default class PetRepository implements IPetRepository{
@@ -38,5 +37,11 @@ export default class PetRepository implements IPetRepository{
             }
         )
     }
+
+    async deleteById(id: string): Promise<void>{
+        await this.petModel.findByIdAndDelete(id)
+    }
+
+
     
 }
