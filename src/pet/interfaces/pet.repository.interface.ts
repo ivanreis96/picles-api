@@ -1,4 +1,6 @@
 import { Pet } from "../schemas/pet.schema";
+import FindByFilterAndTotal from "../usecases/dtos/fild.by.filter.and.total";
+import GetPetsUseCaseInput from "../usecases/dtos/get.pets.usecase.input";
 
 export default interface IPetRepository{
 
@@ -6,4 +8,5 @@ export default interface IPetRepository{
     getById(id: string): Promise<Pet>
     updateById(data: Partial<Pet>): Promise<void>
     deleteById(id: string): Promise<void>
+    findByFilter(input: GetPetsUseCaseInput) : Promise<FindByFilterAndTotal>;
 }

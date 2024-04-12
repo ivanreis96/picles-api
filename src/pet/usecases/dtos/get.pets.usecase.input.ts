@@ -10,3 +10,4 @@ export default class GetPetsUseCaseInput{
         Object.assign(this, data)
     }
 }
+
