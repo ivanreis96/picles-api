@@ -15,8 +15,6 @@ export default class GetShelterDetailsUseCase implements IUseCase<null, GetShelt
 
     async run (input: null): Promise<GetShelterDetailsUseCaseOutput>{
         const shelter = await this.shelterRepository.get();
-
-        console.log(shelter);
         
         return new GetShelterDetailsUseCaseOutput({
             shelterName: shelter.name,

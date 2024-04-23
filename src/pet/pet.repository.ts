@@ -52,6 +52,10 @@ export default class PetRepository implements IPetRepository{
 
         let query = this.petModel.find();
 
+        if(input.type){
+            query = query.find({ type: input.type });
+        }
+
         if(input.size){
             query = query.find({ size: input.size });
         }

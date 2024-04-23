@@ -55,7 +55,7 @@ export class PetController {
         @Query('itemsPerpage') itemPerPage?: string,
      ): Promise<GetPetsUseCaseOutput>{
         const FIRST_PAGE = 1        
-        const DEFAULT_ITENS_PER_PAGE = 10
+        const DEFAULT_ITENS_PER_PAGE = 12
         const useCaseInput = new GetPetsUseCaseInput({
             type: !!type ? type : null,
             size: !!size ? size : null,
