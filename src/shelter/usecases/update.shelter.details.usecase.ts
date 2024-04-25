@@ -28,7 +28,7 @@ export default class UpdateShelterDetailsUsecase implements IUseCase<UpdateShelt
           
             name: shelter.name,
             phone: shelter.phone,
-            whatsapp: shelter.whatsApp,
+            whatsApp: shelter.whatsApp,
             email: shelter.email,
             updatedAt: shelter.updatedAt,
             createdAt: shelter.createdAt
